@@ -1,0 +1,120 @@
+{
+    "istituto": {
+      "nome": "Galileo Ferraris",
+      "indirizzi": [
+        {
+          "nome": "Elettronica",
+          "ambienti": [
+            {
+              "nome": "Laboratorio di Elettronica",
+              "tipologia": "Laboratorio",
+              "superficie": "100 mq",
+              "risorse": [
+                "Stazioni di lavoro",
+                "Strumenti di misura",
+                "Componenti elettronici"
+              ],
+              "attivita": [
+                "Laboratori pratici",
+                "Progetti di elettronica",
+                "Corsi di formazione"
+              ]
+            },
+            {
+              "nome": "Aula di Elettronica",
+              "tipologia": "Aula",
+              "superficie": "50 mq",
+              "risorse": [
+                "Lavagna interattiva",
+                "Computer"
+              ],
+              "attivita": [
+                "Lezioni frontali",
+                "Discussioni in classe",
+                "Esami"
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Informatica",
+          "ambienti": [
+            {
+              "nome": "Laboratorio di Informatica",
+              "tipologia": "Laboratorio",
+              "superficie": "120 mq",
+              "risorse": [
+                "PC con software specifico",
+                "Stampanti",
+                "Rete Wi-Fi"
+              ],
+              "attivita": [
+                "Sviluppo software",
+                "Progetti di rete",
+                "Corsi di programmazione"
+              ]
+            },
+            {
+              "nome": "Aula di Informatica",
+              "tipologia": "Aula",
+              "superficie": "60 mq",
+              "risorse": [
+                "Lavagna interattiva",
+                "Computer"
+              ],
+              "attivita": [
+                "Lezioni frontali",
+                "Discussioni in classe",
+                "Esami"
+              ]
+            }
+          ]
+        }
+      ],
+      "servizi": {
+        "libreria": {
+          "nome": "Libreria ITI Galileo Ferraris",
+          "superficie": "80 mq",
+          "risorse": [
+            "Libri di testo",
+            "Riviste scientifiche"
+          ],
+          "attivita": [
+            "Prestito libri",
+            "Attività di ricerca"
+          ]
+        },
+        "aule_speciali": [
+          {
+            "nome": "Palestra",
+            "superficie": "200 mq",
+            "risorse": [
+              "Attrezzature sportive",
+              "Spogliatoi",
+              "Sistema audio"
+            ],
+            "attivita": [
+              "Lezioni di educazione fisica",
+              "Attività sportive",
+              "Eventi scolastici"
+            ]
+          },
+          {
+            "nome": "Auditorium",
+            "superficie": "300 mq",
+            "risorse": [
+              "Sistema audio",
+              "Sistema di illuminazione",
+              "Posti a sedere"
+            ],
+            "attivita": [
+              "Conferenze",
+              "Eventi culturali",
+              "Proiezioni"
+            ]
+          }
+        ]
+      }
+    }
+  }
+  
