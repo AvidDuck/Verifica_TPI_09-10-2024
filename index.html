@@ -47,65 +47,100 @@
 
 <div class="container">
     <h1>Galileo Ferraris</h1>
-
-    <div class="section">
-        <h2>Elettronica</h2>
-        <div class="ambiente">
-            <h3>Laboratorio di Elettronica</h3>
-            <p>Tipologia: Laboratorio</p>
-            <p>Superficie: 100 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Stazioni di lavoro, Strumenti di misura, Componenti elettronici</div>
-            <div class="attivita"><strong>Attività:</strong> Laboratori pratici, Progetti, Corsi</div>
-        </div>
-        <div class="ambiente">
-            <h3>Aula di Elettronica</h3>
-            <p>Tipologia: Aula</p>
-            <p>Superficie: 50 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Lavagna interattiva, Computer</div>
-            <div class="attivita"><strong>Attività:</strong> Lezioni, Discussioni, Esami</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Informatica</h2>
-        <div class="ambiente">
-            <h3>Laboratorio di Informatica</h3>
-            <p>Tipologia: Laboratorio</p>
-            <p>Superficie: 120 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> PC, Stampanti, Wi-Fi</div>
-            <div class="attivita"><strong>Attività:</strong> Sviluppo software, Progetti, Corsi</div>
-        </div>
-        <div class="ambiente">
-            <h3>Aula di Informatica</h3>
-            <p>Tipologia: Aula</p>
-            <p>Superficie: 60 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Lavagna interattiva, Computer</div>
-            <div class="attivita"><strong>Attività:</strong> Lezioni, Discussioni, Esami</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Servizi</h2>
-        <div class="ambiente">
-            <h3>Libreria</h3>
-            <p>Superficie: 80 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Libri, Riviste</div>
-            <div class="attivita"><strong>Attività:</strong> Prestito, Ricerca</div>
-        </div>
-        <div class="ambiente">
-            <h3>Palestra</h3>
-            <p>Superficie: 200 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Attrezzature, Spogliatoi, Audio</div>
-            <div class="attivita"><strong>Attività:</strong> Educazione fisica, Sport, Eventi</div>
-        </div>
-        <div class="ambiente">
-            <h3>Auditorium</h3>
-            <p>Superficie: 300 mq</p>
-            <div class="risorse"><strong>Risorse:</strong> Audio, Illuminazione, Posti</div>
-            <div class="attivita"><strong>Attività:</strong> Conferenze, Eventi, Proiezioni</div>
-        </div>
-    </div>
+    <div id="contenuto"></div> <!-- Contenitore per i dati -->
 </div>
+
+<script>
+    // Funzione per caricare il file JSON
+    fetch('ambienti.json') // Assicurati che il file si trovi nella stessa directory
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const contenuto = document.getElementById('contenuto');
+            // Itera attraverso gli indirizzi
+            data.istituto.indirizzi.forEach(indirizzo => {
+                const section = document.createElement('div');
+                section.className = 'section';
+                const heading = document.createElement('h2');
+                heading.textContent = indirizzo.nome;
+                section.appendChild(heading);
+
+                // Itera attraverso gli ambienti di ogni indirizzo
+                indirizzo.ambienti.forEach(ambiente => {
+                    const ambienteDiv = document.createElement('div');
+                    ambienteDiv.className = 'ambiente';
+
+                    const ambienteHeading = document.createElement('h3');
+                    ambienteHeading.textContent = ambiente.nome;
+                    ambienteDiv.appendChild(ambienteHeading);
+
+                    const tipologia = document.createElement('p');
+                    tipologia.textContent = 'Tipologia: ' + ambiente.tipologia;
+                    ambienteDiv.appendChild(tipologia);
+
+                    const superficie = document.createElement('p');
+                    superficie.textContent = 'Superficie: ' + ambiente.superficie;
+                    ambienteDiv.appendChild(superficie);
+
+                    const risorseDiv = document.createElement('div');
+                    risorseDiv.className = 'risorse';
+                    risorseDiv.innerHTML = '<strong>Risorse:</strong> ' + ambiente.risorse.join(', ');
+                    ambienteDiv.appendChild(risorseDiv);
+
+                    const attivitaDiv = document.createElement('div');
+                    attivitaDiv.className = 'attivita';
+                    attivitaDiv.innerHTML = '<strong>Attività:</strong> ' + ambiente.attivita.join(', ');
+                    ambienteDiv.appendChild(attivitaDiv);
+
+                    section.appendChild(ambienteDiv);
+                });
+
+                contenuto.appendChild(section);
+            });
+
+            // Aggiungi i servizi
+            const serviziSection = document.createElement('div');
+            serviziSection.className = 'section';
+            const serviziHeading = document.createElement('h2');
+            serviziHeading.textContent = 'Servizi';
+            serviziSection.appendChild(serviziHeading);
+
+            for (const servizio in data.istituto.servizi) {
+                const ambiente = data.istituto.servizi[servizio];
+                const ambienteDiv = document.createElement('div');
+                ambienteDiv.className = 'ambiente';
+
+                const ambienteHeading = document.createElement('h3');
+                ambienteHeading.textContent = ambiente.nome;
+                ambienteDiv.appendChild(ambienteHeading);
+
+                const superficie = document.createElement('p');
+                superficie.textContent = 'Superficie: ' + ambiente.superficie;
+                ambienteDiv.appendChild(superficie);
+
+                const risorseDiv = document.createElement('div');
+                risorseDiv.className = 'risorse';
+                risorseDiv.innerHTML = '<strong>Risorse:</strong> ' + ambiente.risorse.join(', ');
+                ambienteDiv.appendChild(risorseDiv);
+
+                const attivitaDiv = document.createElement('div');
+                attivitaDiv.className = 'attivita';
+                attivitaDiv.innerHTML = '<strong>Attività:</strong> ' + ambiente.attivita.join(', ');
+                ambienteDiv.appendChild(attivitaDiv);
+
+                serviziSection.appendChild(ambienteDiv);
+            }
+
+            contenuto.appendChild(serviziSection);
+        })
+        .catch(error => {
+            console.error('Si è verificato un errore:', error);
+        });
+</script>
 
 </body>
 </html>
